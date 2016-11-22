@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jenkins',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,17 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Jenkins
+PROJECT_APPS = (
+    'polls',
+)
+
+JENKINS_TASKS = (
+    'django_jenkins.tasks.run_pep8',
+    'django_jenkins.tasks.run_pyflakes',
+    'django_jenkins.tasks.run_flake8',
+#    'django_jenkins.tasks.run_csslint',
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
