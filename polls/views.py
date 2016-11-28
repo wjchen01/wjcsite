@@ -22,17 +22,17 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Question.objects.order_by('-pub_date')[:5]
-    
+
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/detail.html', {'question' : question})
+    return render(request, 'polls/detail.html', {'question': question})
 
 
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
-    
+
 
 def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -42,7 +42,7 @@ def results(request, question_id):
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
-    
+
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -60,5 +60,5 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', 
+        return HttpResponseRedirect(reverse('polls:results',
                                             args=(question.id,)))
